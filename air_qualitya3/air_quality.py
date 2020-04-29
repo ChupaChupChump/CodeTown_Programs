@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
+import os
+cwd = os.getcwd()
 
-def read_data(FilENAME):
-    readings = open(FILENAME, "r")
 
+def read_data(filename):
+    os.open(filename)
+    return print(filename)
 
 def get_average_dictionary(readings):
     pass  # TODO: Implement this correctly
