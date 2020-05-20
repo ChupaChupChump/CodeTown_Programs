@@ -94,6 +94,14 @@ class Application(tk.Frame):
 		self.master = master
 		self.pack()
 		self.create_widgets()
+		tk.Label(master, text="First Name").grid(row=0)
+		tk.Label(master, text="Last Name").grid(row=1)
+
+		e1 = tk.Entry(master)
+		e2 = tk.Entry(master)
+
+		e1.grid(row=0, column=1)
+		e2.grid(row=1, column=1)
 
 	def create_widgets(self):
 		self.hi_there = tk.Button(self)
@@ -105,6 +113,7 @@ root = tk.Tk()
 app = Application(master=root)
 app.master.title(title)
 app.master.maxsize(400, 200)
+#app.master.gemoetry(400, 200)
 app.mainloop()
 
 
