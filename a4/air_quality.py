@@ -6,6 +6,8 @@ import tkinter as tk
 title = "Air Quality Assessor 3000"
 author = "Mitchell Charity"
 
+
+
 standard = {"o":8.0,"s": 20,"p": 25} # Dictionary for standard values
 
 
@@ -84,33 +86,29 @@ def largest(AQIA,a):
         if AQIA[i] > max: 
             max = AQIA[i] 
     return max
-	
-reading()
 
 
 class Application(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
-        self.pack()
-        self.create_widgets()
+	def __init__(self, master=None):
+		super().__init__(master)
+		self.master = master
+		self.pack()
+		self.create_widgets()
 
-    def create_widgets(self):
-        self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Hello World\n(click me)"
-        self.hi_there["command"] = self.say_hi
-        self.hi_there.pack(side="top")
-
-        self.quit = tk.Button(self, text="QUIT", fg="red",
-                              command=self.master.destroy)
-        self.quit.pack(side="bottom")
-
-    def say_hi(self):
-        print("hi there, everyone!")
+	def create_widgets(self):
+		self.hi_there = tk.Button(self)
+		self.hi_there["text"] = "Hello World\n(click me)"
+		#self.hi_there["command"] = self.say_hi
+		self.hi_there.pack(side="top")
 
 root = tk.Tk()
 app = Application(master=root)
+app.master.title(title)
+app.master.maxsize(400, 200)
 app.mainloop()
+
+
+reading()
 
 global n
 n = 0
@@ -142,5 +140,3 @@ while n < r:
 	print("AQI: ",  AQI) 
 	print(" ")
 	n +=1
-
-
