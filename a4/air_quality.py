@@ -112,6 +112,7 @@ class Application(tk.Frame):
 root = tk.Tk()
 app = Application(master=root)
 app.master.title(title)
+frame = tk.Frame(root, padding = (10,5,10,5), relief = 'groove', width = 200, height = 200)
 app.master.maxsize(400, 200)
 #app.master.gemoetry(400, 200)
 app.mainloop()
