@@ -1,12 +1,27 @@
 #!/usr/bin/env python3
 
 import sys, time, os
-import tkinter as tk
+from tkinter import *
+from tkinter import ttk
 
 title = "Air Quality Assessor 3000"
 author = "Mitchell Charity"
 
+root = Tk()
+root.title(title)
 
+frame = ttk.Frame(root, padding = "3 3 12 12")
+frame.grid(column = 0, row = 0, sticky = (N, S E, W))
+frame.columnconfigure(0, weight = 1)
+frame.rowconfigure(0, weight = 1)
+
+ozone = StringVar()
+
+o_entry = ttk.Entry(frame, width = 7, testvariable = ozone)
+o_entry.grid(column = 2, row = 1, sticky = (W, E))
+
+
+root.mainloop()
 
 standard = {"o":8.0,"s": 20,"p": 25} # Dictionary for standard values
 
@@ -78,32 +93,7 @@ def largest(AQIA,a):
   
     # Initialize maximum element 
     max = AQIA[0] 
-  
-    # Traverse array elements from second 
-    # and compare every element with  
-    # current max 
-    for i in range(1, n): 
-        if AQIA[i] > max: 
-            max = AQIA[i] 
-    return max
-
-
-class Application(tk.Frame):
-	def __init__(self, master=None):
-		super().__init__(master)
-		self.master = master
-		self.pack()
-		self.create_widgets()
-		tk.Label(master, text="First Name").grid(row=0)
-		tk.Label(master, text="Last Name").grid(row=1)
-
-		e1 = tk.Entry(master)
-		e2 = tk.Entry(master)
-
-		e1.grid(row=0, column=1)
-		e2.grid(row=1, column=1)
-
-	def create_widgets(self):
+  idgets(self):
 		self.hi_there = tk.Button(self)
 		self.hi_there["text"] = "Hello World\n(click me)"
 		#self.hi_there["command"] = self.say_hi
@@ -116,6 +106,7 @@ frame = tk.Frame(root, padding = (10,5,10,5), relief = 'groove', width = 200, he
 app.master.maxsize(400, 200)
 #app.master.gemoetry(400, 200)
 app.mainloop()
+
 
 
 reading()
