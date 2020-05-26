@@ -88,9 +88,8 @@ def largest(AQIA,a):
     # Traverse array elements from second 
     # and compare every element with  
     # current max 
-    for i in range(1, n): 
-        if AQIA[i] > max: 
-            max = AQIA[i] 
+    if AQIA[i] > max: 
+        max = AQIA[i] 
     return max
 	
 reading()

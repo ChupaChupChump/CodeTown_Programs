@@ -19,8 +19,7 @@ celsius = StringVar()
 f_entry=ttk.Entry(frame, width=7, textvariable=fahrenheit)
 f_entry.grid(column=2, row=1, sticky=(W, E))
 
-c_label = ttk.Label(frame, textvariable=celsius)
-c_label.grid(column=2, row=2, sticky=(W, E))
+
 g_button = ttk.Button(frame, text='Go', command=calculate)
 g_button.grid(column=3, row=3, sticky=W)
 f_label = ttk.Label(frame, text='degrees F')
