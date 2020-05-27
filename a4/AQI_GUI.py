@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-title = "Air Quality Assessor 3000"
+title = "Air Assessor 9000"
 author = "Mitchell Charity"
 
 standard = {"o":8.0,"s": 20,"p": 25} # Dictionary for standard values
@@ -14,11 +14,11 @@ def largest(AQIA,a):
     # Traverse array elementss
     # and compare every element with  
     # current max 
-    if AQIA[i] > max: 
-        max = AQIA[i] 
+    for i in range(1, a): 
+        if AQIA[i] > max: 
+            max = AQIA[i] 
     return max
 
-n = 0
 def calculate(*args):
     try:
         ozoneVal = float(ozone.get())
@@ -31,12 +31,15 @@ def calculate(*args):
         round(AQIS)
         AQIP = 100 * ( otherParticlesVal / standard["p"] )
         round(AQIP)
+
         AQIA = [AQIO, AQIS, AQIP] # Array of results of AQI for O, S & P
+
         a = len(AQIA) # Length of array AQIA into variable a
 
 
-        AQI = largest(AQIA, a)  # Make largest number AQI
-        AQI.set(AQI)
+        largestAQI = largest(AQIA, a)  # Make largest number AQI
+
+        AQI.set(largestAQI)
 
     except ValueError:
         pass
@@ -74,7 +77,7 @@ ozone_label = ttk.Label(frame, text='Ozone')
 ozone_label.grid(column=2, row=1, sticky=W)
 sulfurDioxide_label = ttk.Label(frame, text='Sulfur Dioxide')
 sulfurDioxide_label.grid(column=2, row=2, sticky=W)
-otherParticles_label = ttk.Label(frame, text='Other particles')
+otherParticles_label = ttk.Label(frame, text='Particles less than 2.5 micrometer diamter:')
 otherParticles_label.grid(column=2, row=3, sticky=W)
 
 
