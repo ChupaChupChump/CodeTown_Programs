@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-title = "Air Assessor 9000"
+title = "Air Assessor 9000" #Better title than aqigui, follows naming scheme.
 author = "Mitchell Charity"
 
 standard = {"o":8.0,"s": 20,"p": 25} # Dictionary for standard values
@@ -20,6 +20,10 @@ def largest(AQIA,a):
     return max
 
 def calculate(*args):
+    # This functions gets the values from the entry boxes, converted them
+    # to floats and then use a standard value dicionary to perform
+    # the correct calculations
+    # The largest aqi is then converted to have 2 decimal points and is set
     try:
         ozoneVal = float(ozone.get())
         sulfurDioxideVal = float(sulfurDioxide.get())
@@ -38,16 +42,23 @@ def calculate(*args):
 
 
         largestAQI = largest(AQIA, a)  # Make largest number AQI
-
-        AQI.set(largestAQI)
+        formattedAQI = "{:.2f}".format(largestAQI)
+        AQI.set(formattedAQI)
 
     except ValueError:
         pass
     
+
+# The tkinter work
+# using row/column configure commands to allow for resizing
+# Would have like to resize each object but decided it was not needed
+# and this gui looks fine anyway.
 root = Tk()
 root.title(title)
 frame = ttk.Frame(root, padding='3 3 12 12')
 frame.grid(column=0, row=0, sticky=(N, W, E, S))
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
 frame.columnconfigure(0, weight=1)
 frame.rowconfigure(1, weight=1)
 frame.rowconfigure(2, weight = 1, minsize = 20)
@@ -60,6 +71,7 @@ frame.columnconfigure(3, weight = 1)
 frame.columnconfigure(4, weight = 1)
 frame.columnconfigure(5, weight = 1)
 
+#entry box strings
 ozone = StringVar()
 sulfurDioxide = StringVar()
 ozone = StringVar()
@@ -102,9 +114,9 @@ otherParticlesinfo_label.grid(column=3, row=3, sticky=W)
 aqi_label = ttk.Label(frame, text='AQI:')
 aqi_label.grid(column=1, row=5, sticky=E)
 
-
+# Padding and the return key
 for child in frame.winfo_children():
-    child.grid_configure(padx=5, pady=5)
+   child.grid_configure(padx=5, pady=6)
 ozone_entry.focus()
 sulfurDioxide_entry.focus()
 root.bind('<Return>', calculate)
