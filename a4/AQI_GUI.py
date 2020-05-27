@@ -47,9 +47,16 @@ def calculate(*args):
 root = Tk()
 root.title(title)
 frame = ttk.Frame(root, padding='3 3 12 12')
-frame.grid(column=0, row=0, sticky=(N, W, E, S))
+frame.grid(column=6, row=6, sticky=(N, W, E, S))
 frame.columnconfigure(0, weight=1)
-frame.rowconfigure(0, weight=1)
+frame.rowconfigure(1, weight=1)
+frame.rowconfigure(2, weight = 1, minsize = 20)
+frame.rowconfigure(3, weight = 1, minsize = 20)
+frame.columnconfigure(1,weight = 1)
+frame.columnconfigure(2, weight = 1)
+frame.columnconfigure(3, weight = 1)
+frame.columnconfigure(4, weight = 1)
+frame.columnconfigure(5, weight = 1)
 
 ozone = StringVar()
 sulfurDioxide = StringVar()
@@ -57,32 +64,41 @@ ozone = StringVar()
 otherParticles = StringVar()
 AQI = StringVar()
 
-ozone_entry=ttk.Entry(frame, width=8, textvariable=ozone)
-ozone_entry.grid(column=3, row=1, sticky=(W, E))
+ozone_entry=ttk.Entry(frame, width=6, textvariable=ozone)
+ozone_entry.grid(column=2, row=1, sticky=(W, E))
 
-sulfurDioxide_entry=ttk.Entry(frame, width=8, textvariable=sulfurDioxide)
-sulfurDioxide_entry.grid(column=3, row=2, sticky=(W, E))
+sulfurDioxide_entry=ttk.Entry(frame, width=6, textvariable=sulfurDioxide)
+sulfurDioxide_entry.grid(column=2, row=2, sticky=(W, E))
 
-otherParticles_entry=ttk.Entry(frame, width=8, textvariable=otherParticles)
-otherParticles_entry.grid(column=3, row=3, sticky=(W, E))
+otherParticles_entry=ttk.Entry(frame, width=6, textvariable=otherParticles)
+otherParticles_entry.grid(column=2, row=3, sticky=(W, E))
 
 
 aqi_label = ttk.Label(frame, textvariable=AQI)
-aqi_label.grid(column=3, row=4, sticky=(W, E))
+aqi_label.grid(column=2, row=5, sticky=(N, E, S, W))
 
-g_button = ttk.Button(frame, text='Go', command=calculate)
-g_button.grid(column=4, row=6, sticky=W)
+g_button = ttk.Button(frame, text='Calculate AQI', command=calculate)
+g_button.grid(column=2, row=4, sticky=W)
 
-ozone_label = ttk.Label(frame, text='Ozone')
-ozone_label.grid(column=2, row=1, sticky=W)
-sulfurDioxide_label = ttk.Label(frame, text='Sulfur Dioxide')
-sulfurDioxide_label.grid(column=2, row=2, sticky=W)
+ozone_label = ttk.Label(frame, text='Ozone:')
+ozone_label.grid(column=1, row=1, sticky=E)
+ozone_labelinfo = ttk.Label(frame, text='Parts per hundred million')
+ozone_labelinfo.grid(column=3, row=1, sticky=W)
+
+sulfurDioxide_label = ttk.Label(frame, text='Sulfur Dioxide:')
+sulfurDioxide_label.grid(column=1, row=2, sticky=E)
+sulfurDioxide_labelinfo = ttk.Label(frame, text='Parts per hundred million')
+sulfurDioxide_labelinfo.grid(column=3, row=2, sticky=W)
+
+
 otherParticles_label = ttk.Label(frame, text='Particles less than 2.5 micrometer diamter:')
-otherParticles_label.grid(column=2, row=3, sticky=W)
+otherParticles_label.grid(column=1, row=3, sticky=E)
+otherParticlesinfo_label = ttk.Label(frame, text='Micrograms per cubic metre')
+otherParticlesinfo_label.grid(column=3, row=3, sticky=W)
 
 
-d_label = ttk.Label(frame, text='AQI:')
-d_label.grid(column=2, row=4, sticky=W)
+aqi_label = ttk.Label(frame, text='AQI:')
+aqi_label.grid(column=1, row=5, sticky=E)
 
 
 for child in frame.winfo_children():
